@@ -90,7 +90,6 @@ def print_dates(year) :
                     space2 = 0;
                 if maximum_days_second_month+1 == date_of_first_month :
                     maximum_days_second_month = 0;
-        else :
             
         
 
