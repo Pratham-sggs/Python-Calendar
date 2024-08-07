@@ -1,2 +1,11 @@
-from day import get_week_day;
-from isLeapYear import is_leap_year;
+from printCalendar import *;
+
+year = int(input("Enter The Year :"))
+if(year <= 0 or year > 9999) :
+        print("Enter Valid Year!")
+    
+print_year(year);
+for i in range (0,4) :
+        print_layout();
+        print_dates(year);
+        print();

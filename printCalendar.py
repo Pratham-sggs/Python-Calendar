@@ -64,12 +64,18 @@ def print_dates(year) :
     maximum_days_first_month = maxm_days_in_month(list_of_months[ongoing_literal-3],year)
     maximum_days_second_month = maxm_days_in_month(list_of_months[ongoing_literal-2],year)
     maximum_days_third_month = maxm_days_in_month(list_of_months[ongoing_literal-1],year)
-    space61 = 0
-    space62 = 0
-    space63 = 0
     space31 = 1;
     space32 = 1
     space33 = 1
+    kount = 0;
+    kount1 = 0
+    kount2=0
+    count1=0;
+    count2=0
+    count3=0
+
+    
+
 
     while(maximum_days_first_month or maximum_days_second_month or maximum_days_third_month) :
 
@@ -77,8 +83,12 @@ def print_dates(year) :
         # To print first line of the first month of the row
         if(maximum_days_first_month) :
             for i in range (0,7-day_on_first_month) :
-                
-                print(" "*(literal1*3) + " "*space1 + str(date_of_first_month) + " "*space31 + " "*space61,end="")
+                kount +=1
+                if kount == 1 : 
+                    if "Saturday" == get_week_day(ongoing_literal-2,year) :
+                        space31 = 0;
+                print(" "*(literal1*3) + " "*space1 + str(date_of_first_month) + " "*space31,end="")
+                count1 = i+1;
                 if i == 0 :
                     literal1 = 0;
                 date_of_first_month += 1;
@@ -86,20 +96,28 @@ def print_dates(year) :
                     space1 = 0;
                 if maximum_days_first_month+1 == date_of_first_month :
                     maximum_days_first_month = 0;
+                    print("   "*(6-count1),end="")
+                    if(6-count1>=0) :
+                        print("  ",end="")
                     break;
                 if (i == (5-day_on_first_month)) :
-                    space61 = 6;
                     space31=0
-            space61 = 0;
+            print(" "*6,end="")
             space31 = 1;
             day_on_first_month = 0;
+        else :
+            print(" "*26,end="");
         
 
         #to print first line of the second month of row 
         if (maximum_days_second_month) :
             for i in range (0,7-day_on_second_month) :
-                
-                print(" "*(literal2*3) + " "*space2 + str(date_of_second_month)+ " "*space32 + " "*space62,end="")
+                kount1 +=1
+                if kount1 == 1 : 
+                    if "Saturday" == get_week_day(ongoing_literal-1,year) :
+                        space32 = 0;
+                print(" "*(literal2*3) + " "*space2 + str(date_of_second_month)+ " "*space32,end="")
+                count2=i+1;
                 if i == 0 :
                     literal2 = 0;
                 date_of_second_month += 1;
@@ -107,22 +125,30 @@ def print_dates(year) :
                     space2 = 0;
                 if maximum_days_second_month+1 == date_of_second_month :
                     maximum_days_second_month = 0;
+                    print("   "*(6-count2),end="")
+                    if(6-count2>=0) :
+                        print("  ",end="")
                     break;
                 if i == (5-day_on_second_month) :
-                    space62 = 6;
                     space32 =0
-                
-            space62 = 0;
+            print(" "*6,end="")
             space32 = 1;
             day_on_second_month = 0;
+        else :
+            print(" "*26,end="");
             
         
 
         if(maximum_days_third_month) :
             #to print first line of the third month of row 
             for i in range (0,7-day_on_third_month) :
+                kount2 +=1
+                if kount2 == 1 : 
+                    if "Saturday" == get_week_day(ongoing_literal,year) :
+                        space33 = 0;
                 
-                print(" "*(literal3*3) + " "*space3 + str(date_of_third_month)+ " "*space33 + " "*space63,end="")
+                print(" "*(literal3*3) + " "*space3 + str(date_of_third_month)+ " "*space33 ,end="")
+                count3=i+1
                 if i == 0 :
                     literal3 = 0;
                 date_of_third_month += 1;
@@ -130,17 +156,13 @@ def print_dates(year) :
                     space3 = 0;
                 if maximum_days_third_month+1 == date_of_third_month :
                         maximum_days_third_month = 0;
+                        print("   "*(6-count3),end="")
+                        if(6-count3>=0) :
+                            print("  ",end="")
                         break
                 if i == (5-day_on_third_month) :
-                    space63 = 6
                     space33 = 0;
+            print(" "*6,end="")
             space33 = 1;
             day_on_third_month = 0;
-            space63=0;
         print(); # to break the end="" in last print
-
-print_year(2003);
-for i in range (0,4) :
-    print_layout();
-    print_dates(2003);
-    print();
