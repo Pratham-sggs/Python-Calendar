@@ -41,6 +41,8 @@ def print_year(year) :
         print(" "*35 + year_string);
     else :
         print(" "*34 + year_string);
+    print();
+    print();
 
 
 def print_dates(year) :
@@ -50,9 +52,9 @@ def print_dates(year) :
     date_of_first_month = 1;
     date_of_second_month = 1;
     date_of_third_month = 1;
-    day_on_first_month = list_of_day.index(get_week_day(ongoing_literal-3,year))
-    day_on_second_month = list_of_day(get_week_day(ongoing_literal-2,year))
-    day_on_third_month = list_of_day.index(get_week_day(ongoing_literal-1,year))
+    day_on_first_month = list_of_day.index(get_week_day(ongoing_literal-2,year))
+    day_on_second_month = list_of_day.index(get_week_day(ongoing_literal-1,year))
+    day_on_third_month = list_of_day.index(get_week_day(ongoing_literal,year))
     literal1=day_on_first_month
     literal2=day_on_second_month
     literal3=day_on_third_month
@@ -62,6 +64,12 @@ def print_dates(year) :
     maximum_days_first_month = maxm_days_in_month(list_of_months[ongoing_literal-3],year)
     maximum_days_second_month = maxm_days_in_month(list_of_months[ongoing_literal-2],year)
     maximum_days_third_month = maxm_days_in_month(list_of_months[ongoing_literal-1],year)
+    space61 = 0
+    space62 = 0
+    space63 = 0
+    space31 = 1;
+    space32 = 1
+    space33 = 1
 
     while(maximum_days_first_month or maximum_days_second_month or maximum_days_third_month) :
 
@@ -69,39 +77,70 @@ def print_dates(year) :
         # To print first line of the first month of the row
         if(maximum_days_first_month) :
             for i in range (0,7-day_on_first_month) :
-                print(" "*(literal1*3) + " "*space1 + str(date_of_first_month) + " ",end="")
+                
+                print(" "*(literal1*3) + " "*space1 + str(date_of_first_month) + " "*space31 + " "*space61,end="")
                 if i == 0 :
                     literal1 = 0;
-                date_of_first_month += date_of_first_month;
-                if  len(str(date_of_first_month) == 2) :
+                date_of_first_month += 1;
+                if  len(str(date_of_first_month))==2 :
                     space1 = 0;
                 if maximum_days_first_month+1 == date_of_first_month :
                     maximum_days_first_month = 0;
+                    break;
+                if (i == (5-day_on_first_month)) :
+                    space61 = 6;
+                    space31=0
+            space61 = 0;
+            space31 = 1;
+            day_on_first_month = 0;
         
 
         #to print first line of the second month of row 
         if (maximum_days_second_month) :
             for i in range (0,7-day_on_second_month) :
-                print(" "*(literal2*3) + " "*space2 + str(date_of_second_month) + " ",end="")
+                
+                print(" "*(literal2*3) + " "*space2 + str(date_of_second_month)+ " "*space32 + " "*space62,end="")
                 if i == 0 :
                     literal2 = 0;
-                date_of_second_month += date_of_second_month;
-                if  len(str(date_of_second_month) == 2) :
+                date_of_second_month += 1;
+                if  len(str(date_of_second_month))==2 :
                     space2 = 0;
-                if maximum_days_second_month+1 == date_of_first_month :
+                if maximum_days_second_month+1 == date_of_second_month :
                     maximum_days_second_month = 0;
+                    break;
+                if i == (5-day_on_second_month) :
+                    space62 = 6;
+                    space32 =0
+                
+            space62 = 0;
+            space32 = 1;
+            day_on_second_month = 0;
             
         
 
         if(maximum_days_third_month) :
             #to print first line of the third month of row 
             for i in range (0,7-day_on_third_month) :
-                print(" "*(literal3*3) + " "*space3 + str(date_of_third_month) + " ",end="")
+                
+                print(" "*(literal3*3) + " "*space3 + str(date_of_third_month)+ " "*space33 + " "*space63,end="")
                 if i == 0 :
                     literal3 = 0;
-                date_of_third_month += date_of_third_month;
-                if  len(str(date_of_third_month) == 2) :
-                    space2 = 0;
-                if maximum_days_third_month+1 == date_of_first_month :
-                        maximum_days_second_month = 0;
-        print(" "); # to break the end="" in last print
+                date_of_third_month += 1;
+                if  len(str(date_of_third_month))==2 :
+                    space3 = 0;
+                if maximum_days_third_month+1 == date_of_third_month :
+                        maximum_days_third_month = 0;
+                        break
+                if i == (5-day_on_third_month) :
+                    space63 = 6
+                    space33 = 0;
+            space33 = 1;
+            day_on_third_month = 0;
+            space63=0;
+        print(); # to break the end="" in last print
+
+print_year(2003);
+for i in range (0,4) :
+    print_layout();
+    print_dates(2003);
+    print();

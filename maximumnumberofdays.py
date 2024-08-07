@@ -7,4 +7,4 @@ def maxm_days_in_month(month,year) :
         if(is_leap_year(year)):
             return 29;
         return 28;
-    return list_of_days[list_of_months.index(month)]
+    return int(list_of_days[list_of_months.index(month)])
