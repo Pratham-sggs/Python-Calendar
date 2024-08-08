@@ -1,5 +1,4 @@
 from day import get_week_day;
-from isLeapYear import is_leap_year;
 from maximumnumberofdays import maxm_days_in_month;
 
 ongoing_literal = 0; #defining global variable to keep track of ongoing month
