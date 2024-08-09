@@ -5,7 +5,7 @@ def print_upper_box (symbol,year,layout) :
         print(symbol*((layout*25)-5));
         print();
         print(symbol + " ")
-        print();
-        print(symbol*((layout*25)-5));
+        print(..........);
+        print(symbol*((layout*25)-5))
 
 print_upper_box("-",3000,3)
