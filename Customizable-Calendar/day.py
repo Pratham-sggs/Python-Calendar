@@ -1,6 +1,6 @@
-def get_week_day(month,year) :
+def get_week_day(date,month,year) :
     #Here We are calculating Year using Zeller’s Congruence
-    date=1;
+
     if month == 1 :
         month = 13;
         year = year - 1;
