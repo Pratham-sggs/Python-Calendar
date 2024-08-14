@@ -76,11 +76,15 @@ def print_dates(symbol, year, layout):
         spaces.append(list_of_day.index(get_week_day(1, i + month, year)))
         date_of_months.append(1)
 
-    while any(maxm_days_in_month_number): 
+    while any(maxm_days_in_month_number):
         for i in range(list_of_rc[1]):
-            if maxm_days_in_month_number[i] > 0:
-                if i == 0 :
+            if maxm_days_in_month_number[i] != 0:
+                if i == 0:
                     symbol_true = True
+                else:
+                    symbol_true = False
+                
+                # Print initial spaces and symbols
                 print(symbol * symbol_true + "  " + "   " * spaces[i], end="")
                 
                 for k in range(7 - spaces[i]):
@@ -88,23 +92,26 @@ def print_dates(symbol, year, layout):
                     print(day_str + " ", end="")
                     
                     date_of_months[i] += 1
-                
-                    if date_of_months[i] == maxm_days_in_month_number[i]:
+                    
+                    # Check if the current day exceeds the max days in the month
+                    if date_of_months[i] > maxm_days_in_month_number[i]:
                         maxm_days_in_month_number[i] = 0
                         print(" " * ((6 - spaces[i]) * 3), end="")
-                        print(" "+ symbol, end="")
+                        print(" " + symbol, end="")
                         break
                 
-                symbol_true = False;
+                # Reset symbol_true for next iteration
+                symbol_true = False
                 print(" " + symbol, end="")
                 spaces[i] = 0
             else:
-                symbol_true = False
-                print(symbol * symbol_true + " " * 24 + symbol)
+                print(symbol * symbol_true + " " * 24 + symbol,end="")
+        
         print("")
-        symbol_true = False;
-    print(symbol + symbol*((24*list_of_rc[1]//len(symbol))+(list_of_rc[1]-1)) + symbol)
+        symbol_true = False
+    print(symbol + symbol * ((24 * list_of_rc[1] // len(symbol)) + (list_of_rc[1] - 1)) + symbol)
     month += 3
+
 
                 
 
