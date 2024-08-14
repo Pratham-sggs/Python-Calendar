@@ -83,21 +83,14 @@ def print_dates(symbol, year, layout):
                     symbol_true = True
                 else:
                     symbol_true = False
-                
-                # Print initial spaces and symbols
                 print(symbol * symbol_true + "  " + "   " * spaces[i], end="")
-                
                 for k in range(7 - spaces[i]):
                     day_str = str(date_of_months[i]).rjust(2)
                     print(day_str + " ", end="")
-                    
                     date_of_months[i] += 1
-                    
-                    # Check if the current day exceeds the max days in the month
                     if date_of_months[i] > maxm_days_in_month_number[i]:
                         maxm_days_in_month_number[i] = 0
-                        print(" " * ((6 - spaces[i]) * 3), end="")
-                        print(" " + symbol, end="")
+                        print(" " * ((6 - k) * 3), end="")
                         break
                 
                 # Reset symbol_true for next iteration
@@ -105,36 +98,18 @@ def print_dates(symbol, year, layout):
                 print(" " + symbol, end="")
                 spaces[i] = 0
             else:
-                print(symbol * symbol_true + " " * 24 + symbol,end="")
+                if i == 0 :
+                    print(symbol + " " * 24 + symbol,end="")
+                else :
+                    print (" "*24 + symbol , end="")
         
         print("")
         symbol_true = False
+    for i in range (0,list_of_rc[1]) :
+        if i == 0 :
+            print(symbol + " "*24 + symbol,end="");
+        else :
+            print(" "*24 + symbol,end="")
+    print("");
     print(symbol + symbol * ((24 * list_of_rc[1] // len(symbol)) + (list_of_rc[1] - 1)) + symbol)
-    month += 3
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-layout = "4x3"
-list_of_rc = get_rows_columns_list(layout)
-
-print_year("**",2024,"4x3")
-for i in range(0,list_of_rc[0]) :
-
-    print_month_week("**","4x3")
-    print_dates("**",2024,"4x3")
+    month += list_of_rc[1]
