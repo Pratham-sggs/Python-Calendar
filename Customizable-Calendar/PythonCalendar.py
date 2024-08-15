@@ -7,7 +7,7 @@ if(year <= 0 or year > 9999) :
 else :
         layout = input("Enter layout :")
         if is_layout_correct(layout) :
-                symbol = input("Enter Sepration Symbol :")
+                symbol = input("Enter Sepration Symbol (lenght <= 4) :")
                 if len(symbol) <= 4 :
                         list_of_rc = get_rows_columns_list(layout)
 
